@@ -1,64 +1,29 @@
-#include <stdlib.h>
+#include "resources.h"
+#include <stdio.h>
 
-// Main memory
-uint16_t main_mem[UINT16_MAX];
-
-// Registers
-enum 
-{
-	R_R0 = 0,
-	R_R1,
-	R_R2,
-	R_R3,
-	R_R4,
-	R_R5,
-	R_R6,
-	R_R7,
-	R_PC,
-	R_COND,
-	R_COUNT
-};
-
-uint16_t registers[R_COUNT];
-
-// Operation codes (a comprehensive list of fundamental instructions)
-
-enum 
-{
-	OP_BR = 0, // branch
-	OP_ADD,    // add
-	OP_LD, 	   // load
-	OP_ST, 	   // store
-	OP_JSR,	   // jump register
-	OP_AND,    // bitwise AND
-	OP_LDR,	   // load register
-	OP_STR,    // store register
-	OP_RTI,    // unused
-	OP_NOT,    // bitwise NOT
-	OP_LDI,    // load indirect
-	OP_STI,    // store indirect
-	OP_JMP,    // jump
-	OP_RES,    // reserved (unused)
-	OP_LEA,    // load effective address
-	OP_TRAP    // execute trap
-};
-
-// Condition flags (used for logical evaluations)
-
-enum
-{
-	FL_POS = 1 << 0, // positive 
-	FL_ZRO = 1 << 1, // zero
-	FL_NEG = 1 << 2  // negative
-};
 
 int main(int argc, char *argv[])
 {
+	if (argc < 2)
+	{
+		printf("lc3 [image-file1] ...\n");
+		exit(2);
+	}
+
+	for (int i = 1; 1 < argc; ++i)
+	{
+		if(!read_image(argv[i]))
+		{
+			printf("failed to load image: %s\n", argv[i]);
+			exit(1);
+		}
+	}
+
 	// load arguments
 	int running = 1;
 
 	enum { PC_START_LOCATION = 0x3000 };
-	registers[R_PC] = PC_START;	
+	registers[R_PC] = PC_START_LOCATION;
 
 	while(running)
 	{
