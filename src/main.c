@@ -1,5 +1,4 @@
 #include "resources.h"
-#include <stdio.h>
 
 
 int main(int argc, char *argv[])
@@ -88,7 +87,7 @@ int main(int argc, char *argv[])
 				break;
 
 			case OP_TRAP:
-				_trap(instruction);
+				trap(instruction & 0xFF);
 				break;
 
 			case OP_RES:
