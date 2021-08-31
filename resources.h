@@ -1,9 +1,13 @@
 #include <stdlib.h>
 
-// Main memory
-uint16_t main_mem[UINT16_MAX];
 
-// Registers
+
+/* Main memory */
+uint16_t main_mem[UINT16_MAX];
+		
+
+
+/* Registers */
 enum 
 {
 	R_R0 = 0,
@@ -21,8 +25,9 @@ enum
 
 uint16_t registers[R_COUNT];
 
-// Operation codes (a comprehensive list of fundamental instructions)
 
+
+/* Operation codes (a comprehensive list of fundamental instructions) */
 enum 
 {
 	OP_BR = 0, // branch
@@ -43,8 +48,9 @@ enum
 	OP_TRAP    // execute trap
 };
 
-// Condition flags (used for logical evaluations)
 
+
+/* Condition flags (used for logical evaluations) */
 enum
 {
 	FL_POS = 1 << 0, // positive 
@@ -52,5 +58,15 @@ enum
 	FL_NEG = 1 << 2  // negative
 };
 
+
+
+/* Helper functions */
 uint16_t sign_extend(uint16_t x, int bit_count);
 void update_flags(uint16_t reg);
+
+
+
+/* LC3 operations */
+void _add(uint16_t instr);
+void _ldi(uint16_t instr);
+void _and(uint16_t instr)

@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 		switch (op)
 		{
 			case OP_ADD:
+				_add(instruction);
 				break;
 
 			
@@ -57,6 +58,7 @@ int main(int argc, char *argv[])
 				break;
 
 			case OP_LDI:
+				_ldi(instruction);
 				break;
 
 			case OP_LDR:
