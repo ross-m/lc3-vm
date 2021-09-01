@@ -1,5 +1,8 @@
 #include <stdlib.h>
-
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <signal.h>
 
 
 /* Main memory */
@@ -50,6 +53,28 @@ enum
 
 
 
+/* trap routines */
+enum
+{
+	TRAP_GETC = 0x20,  // get character (no echo) 
+	TRAP_OUT = 0x21,   // output a character
+	TRAP_PUTS = 0x22,  // output a word string
+	TRAP_IN = 0x23,    // get character (echo)
+	TRAP_PUTSP = 0x24, // output a byte string
+	TRAP_HALT = 0x25   // halt program
+};
+
+
+
+/* memory mapped registers */
+enum
+{
+	MR_KBSR = 0xFE00, // keyboard status
+	MR_KBDR = 0xFE02 // keyboard data
+};
+
+
+
 /* Condition flags (used for logical evaluations) */
 enum
 {
@@ -67,6 +92,34 @@ void update_flags(uint16_t reg);
 
 
 /* LC3 operations */
+void _br(uint16_t instr);
 void _add(uint16_t instr);
+void _ld(uint16_t instr);
+void _st(uint16_t instr);
+void _jsr(uint16_t instr);
+void _and(uint16_t instr);
+void _ldr(uint16_t instr);
+void _str(uint16_t instr);
+void _rti(uint16_t instr);
+void _not(uint16_t instr);
 void _ldi(uint16_t instr);
-void _and(uint16_t instr)
+void _sti(uint16_t instr);
+void _jmp(uint16_t instr);
+void _res(uint16_t instr);
+void _lea(uint16_t instr);
+
+
+
+/* LC3 trap routines */
+void _getc();
+void _out();
+void _puts();
+void _in();
+void _putsp();
+void _halt();
+
+
+
+/* miscellaneous helper functions */
+void mem_write(uint16_t addr, uint16_t val);
+uint16_t mem_read(uint16_t addr);

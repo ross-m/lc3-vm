@@ -6,7 +6,7 @@ void _add(uint16_t instr)
 	uint16_t r0 = (instr >> 9) & 0x7;
 
 	/* retrieve first value */
-	uint16_t r0 = (instr >> 6) & 0x7;	
+	uint16_t r1 = (instr >> 6) & 0x7;	
 
 	/* immediate vs register mode */
 	uint16_t mode = (instr >> 5) & 0x1;
@@ -15,13 +15,13 @@ void _add(uint16_t instr)
 	if (mode)
 	{
 		uint16_t imm5 = sign_extend(instr & 0x1F, 5);
-		registers[r0] = registers[r0] + imm5;
+		registers[r0] = registers[r1] + imm5;
 	}
 	
 	else 
 	{
 		uint16_t r2 = instr & 0x7;
-		registers[r0] = registers[r0] + registers[r2];
+		registers[r0] = registers[r1] + registers[r2];
 	}
 
 	update_flags(r0);
@@ -77,7 +77,7 @@ void _br(uint16_t instr)
 
 
 /* also handles the RET call */
-void _jmp(uint16_t isntr)
+void _jmp(uint16_t instr)
 {
 	/* base register */
 	uint16_t baseR = (instr >> 6) & 0x7;
@@ -92,7 +92,7 @@ void _jmp(uint16_t isntr)
 void _jsr(uint16_t instr)
 {
 	/* save calling routine */
-	registers[R_R7] = registers[R_PC]
+	registers[R_R7] = registers[R_PC];
 
 	/* location of first instruction */
 	uint16_t flag = (instr >> 11) & 0x1;
