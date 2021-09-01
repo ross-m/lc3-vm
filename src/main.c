@@ -113,7 +113,7 @@ uint16_t trap(uint16_t instr)
 {
 	uint16_t running = 1;
 
-	switch (instr)
+	switch (instr & 0xFF)
 	{
 		case TRAP_GETC:
 			_getc();
@@ -136,7 +136,8 @@ uint16_t trap(uint16_t instr)
 			break;
 
 		case TRAP_HALT:
-			_halt();
+			puts("HALT");
+			fflush(stdout);
 			running = 0;
 			break; 
 	}	
@@ -154,7 +155,7 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 
-	/* load programs into simulated memory space */
+	// load programs into simulated memory space 
 	for (int i = 1; i < argc; ++i)
 	{
 		if(!read_image(argv[i]))
@@ -164,15 +165,15 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	/* platform-dependent configuration */
+	// platform-dependent configuration 
 	signal(SIGINT, handle_interrupt);
 	disable_input_buffering();
 
-	/* set PC to beginning of instruction array */ 
+	// set PC to beginning of instruction array 
 	enum { PC_START_LOCATION = 0x3000 };
 	registers[R_PC] = PC_START_LOCATION;
 
-	/* main execution loop */
+	// main execution loop 
 	int running = 1;
 
 	while(running)
@@ -235,13 +236,7 @@ int main(int argc, char *argv[])
 				break;
 
 			case OP_TRAP:
-				trap(instruction & 0xFF);
-				break;
-
-			case OP_RES:
-				break;
-
-			case OP_RTI:
+				running = trap(instruction);
 				break;
 
 			default: 	
@@ -254,3 +249,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+

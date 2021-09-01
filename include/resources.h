@@ -116,7 +116,6 @@ void _out();
 void _puts();
 void _in();
 void _putsp();
-void _halt();
 
 
 

@@ -68,10 +68,4 @@ void _putsp()
 
 
 
-void _halt()
-{
-	puts("HALT");
-	fflush(stdout);
 
-	return;
-}

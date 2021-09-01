@@ -95,7 +95,7 @@ void _jsr(uint16_t instr)
 	registers[R_R7] = registers[R_PC];
 
 	/* location of first instruction */
-	uint16_t flag = (instr >> 11) & 0x1;
+	uint16_t flag = (instr >> 11) & 1;
 
 	if (flag)
 	{

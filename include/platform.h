@@ -17,6 +17,7 @@ DWORD fdwMode, fdwOldMode;
 
 struct termios original_tio;
 
+struct termios original_tio;
 #endif
 
 /* implementations are platform dependent but signatures are not */
