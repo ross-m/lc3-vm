@@ -42,7 +42,6 @@ void _in()
 	char c = getchar();
 	putc(c, stdout);
 	registers[R_R0] = (uint16_t)c;
-	fflush(stdout);
 	
 	return;
 }
@@ -55,9 +54,11 @@ void _putsp()
 
 	while (*c)
 	{
-		putc((*c) & 0xFF, stdout);
-		if ((*c) >> 8) putc((*c) >> 8, stdout);
-		++c;	
+		char char1 = (*c) & 0xFF;
+		putc(char1, stdout);
+		char char2 = (*c) >> 8;
+		if (char2) putc(char2, stdout);
+		++c;
 	}
 
 	fflush(stdout);

@@ -40,7 +40,7 @@ void _and(uint16_t instr)
 	uint16_t r1 = (instr >> 6) & 0x7;
 
 	/* register vs immediate mode */
-	uint16_t mode = instr >> 5;	
+	uint16_t mode = (instr >> 5) & 0x1;
 
 	/* immediate mode */
 	if (mode) 
@@ -82,7 +82,7 @@ void _jmp(uint16_t instr)
 	/* base register */
 	uint16_t baseR = (instr >> 6) & 0x7;
  
-	registers[R_PC] = mem_read(baseR);
+	registers[R_PC] = registers[baseR];
 
 	return;
 }
@@ -159,7 +159,7 @@ void _ldr(uint16_t instr)
 	uint16_t r1 = (instr >> 6) & 0x7;
 
 	/* destination register */
-	uint16_t r0 = (instr >> 9) & 0x9;
+	uint16_t r0 = (instr >> 9) & 0x7;
 
 	registers[r0] = mem_read(registers[r1] + reg_offset);
 
@@ -210,7 +210,7 @@ void _st(uint16_t instr)
 	/* source register */
 	uint16_t r0 = (instr >> 9) & 0x7;
 
-	mem_write(addr, r0);
+	mem_write(addr, registers[r0]);
 
 	return;
 }
