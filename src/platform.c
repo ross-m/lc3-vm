@@ -36,7 +36,7 @@ void restore_input_buffering()
 }
 
 #endif
-#if __unix__ || __unix || unix 
+#if __unix__ || __unix || unix || __OSX__ || __APPLE__
 
 uint16_t check_key()
 {

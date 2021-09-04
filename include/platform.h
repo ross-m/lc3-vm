@@ -5,7 +5,7 @@
 
 
 #endif
-#if unix || __unix || __unix__
+#if unix || __unix || __unix__ || __APPLE__ || __OSX__
 
 #include <unistd.h>
 #include <sys/time.h>
