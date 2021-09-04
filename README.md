@@ -13,9 +13,10 @@ This VM simulates the LC-3, a simplified version of the x86 architecture which c
 ![playing now](play.png)
 
 # Installation
-Open a terminal window and type
+Create a build directory and navigate to it. Then build/compile the code. Here's what it looks like on linux/mac:
 ```
 $ git clone https://github.com/ross-m/lc3-vm
+$ mkdir build
 $ cd build
 $ cmake ..
 $ cmake --build .
@@ -26,5 +27,5 @@ $ cmake --build .
 I've included several programs in the ```programs``` directory to demonstrate the functionality of my VM. To run one of these, issue the following commands:
 ```
 $ cd build
-$ ./lc3-vm xxx.obj
+$ ./lc3-vm ../programs/xxx.obj
 ```
