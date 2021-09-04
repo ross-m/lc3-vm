@@ -1,5 +1,5 @@
-#include "resources.h"
-#include "platform.h"
+#include "../include/resources.h"
+#include "../include/platform.h"
 
 void mem_write(uint16_t addr, uint16_t val)
 {
@@ -94,7 +94,7 @@ void update_flags(uint16_t reg)
        		registers[R_COND] = FL_ZRO;
        }
 
-       else if (registers[reg] >> 15)
+       else if (registers[reg] >> 15 == 1)
        {
        		registers[R_COND] = FL_NEG;
        }
@@ -191,10 +191,6 @@ int main(int argc, char *argv[])
 				_and(instruction);
 				break;
 
-			case OP_NOT:
-				_not(instruction);
-				break;
-
 			case OP_BR:
 				_br(instruction);
 				break;
@@ -221,6 +217,10 @@ int main(int argc, char *argv[])
 
 			case OP_LEA:
 				_lea(instruction);
+				break;
+
+			case OP_NOT:
+				_not(instruction);
 				break;
 
 			case OP_ST:

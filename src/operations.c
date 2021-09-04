@@ -1,4 +1,4 @@
-#include "resources.h"
+#include "../include/resources.h"
 
 void _add(uint16_t instr)
 {
@@ -141,7 +141,7 @@ void _ldi(uint16_t instr)
 	uint16_t addr = registers[R_PC] + sign_extend((instr & 0x1FF), 9);
 
 	/* read the address stored in the intermediate address */
-	registers[r0] = mem_read(addr);
+	registers[r0] = mem_read(mem_read(addr));
 
 	update_flags(r0);
 

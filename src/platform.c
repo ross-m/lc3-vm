@@ -1,7 +1,9 @@
-#include "resources.h"
-#include "platform.h"
+#include "../include/resources.h"
+#include "../include/platform.h"
 
-#if __CYGWIN__ 
+#if __CYGWIN__ || WIN32 || WIN64
+
+DWORD fdwMode, fdwOldMode;
 
 uint16_t check_key()
 {
@@ -34,7 +36,7 @@ void restore_input_buffering()
 }
 
 #endif
-#if __unix__ || __unix || unix 
+#ifdef __unix__ || __unix || unix 
 
 uint16_t check_key()
 {
