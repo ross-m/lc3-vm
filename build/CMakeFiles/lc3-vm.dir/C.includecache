@@ -6,39 +6,45 @@
 
 #IncludeRegexTransform: 
 
-../include/platform.h
+/home/ross/Documents/lc3-vm/include/platform.h
 Windows.h
 -
 conio.h
 -
 unistd.h
 -
-fcntl.h
--
 sys/time.h
--
-sys/types.h
 -
 sys/termios.h
 -
-sys/mman.h
--
 
-../include/resources.h
+/home/ross/Documents/lc3-vm/include/resources.h
 stdlib.h
--
-stdio.h
 -
 stdint.h
 -
-string.h
+stdio.h
 -
 signal.h
 -
 
 /home/ross/Documents/lc3-vm/src/main.c
-resources.h
-/home/ross/Documents/lc3-vm/src/resources.h
-platform.h
-/home/ross/Documents/lc3-vm/src/platform.h
+../include/resources.h
+/home/ross/Documents/lc3-vm/include/resources.h
+../include/platform.h
+/home/ross/Documents/lc3-vm/include/platform.h
+
+/home/ross/Documents/lc3-vm/src/operations.c
+../include/resources.h
+/home/ross/Documents/lc3-vm/include/resources.h
+
+/home/ross/Documents/lc3-vm/src/platform.c
+../include/resources.h
+/home/ross/Documents/lc3-vm/include/resources.h
+../include/platform.h
+/home/ross/Documents/lc3-vm/include/platform.h
+
+/home/ross/Documents/lc3-vm/src/traps.c
+../include/resources.h
+/home/ross/Documents/lc3-vm/include/resources.h
 
