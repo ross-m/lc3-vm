@@ -1,1 +1,0 @@
-/usr/bin/cc -Wall -Werror -g   CMakeFiles/lc3-vm.dir/src/main.c.o CMakeFiles/lc3-vm.dir/src/operations.c.o CMakeFiles/lc3-vm.dir/src/traps.c.o CMakeFiles/lc3-vm.dir/src/platform.c.o  -o lc3-vm 

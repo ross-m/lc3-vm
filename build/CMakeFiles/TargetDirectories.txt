@@ -1,3 +1,0 @@
-/home/ross/Documents/lc3-vm/build/CMakeFiles/rebuild_cache.dir
-/home/ross/Documents/lc3-vm/build/CMakeFiles/edit_cache.dir
-/home/ross/Documents/lc3-vm/build/CMakeFiles/lc3-vm.dir
