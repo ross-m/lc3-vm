@@ -1,11 +1,11 @@
-#ifdef __CYGWIN__ || WIN32 || WIN64
+#if __CYGWIN__ || WIN32 || WIN64
 
 #include <Windows.h>
 #include <conio.h>
 
 
 #endif
-#ifdef unix || __unix || __unix__
+#if unix || __unix || __unix__
 
 #include <unistd.h>
 #include <sys/time.h>

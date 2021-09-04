@@ -36,7 +36,7 @@ void restore_input_buffering()
 }
 
 #endif
-#ifdef __unix__ || __unix || unix 
+#if __unix__ || __unix || unix 
 
 uint16_t check_key()
 {
