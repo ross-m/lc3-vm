@@ -4,7 +4,7 @@ I created this project to brush up on my binary arithmetic and low-level program
 
 # About
 
-This VM simulates the LC-3, a simplified version of the x86 architecture which contains fewer instructions. It uses an array of 16-bit integers to simulate the 11 registers used in the LC-3. The main memory is simulated with an array of 65,536 16-bit integers, each of which corresponds to a single memory slot. 
+This VM simulates an LC-3 CPU. LC-3 is an educational version of the x86 architecture which contains fewer instructions. It uses arrays to simulate the storage hardware specified by the LC-3 ISA, namely the 11 registers and 128kB main memory. This program works by loading in an assembled instruction set and updating the program counter to point here. From there it enters a loop wherein instructions are read and executed until termination.
 
 # Screenshots
 
